@@ -43,8 +43,8 @@ namespace WebPointAPI.Controllers
                 return BadRequest(ModelState);
             }
         }
-        [HttpPost("LoginUser")]
 
+        [HttpPost("LoginUser")]
         public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel userinfo) 
         { 
             var result = await _authentication.Authenticate(userinfo.Email,userinfo.Password);

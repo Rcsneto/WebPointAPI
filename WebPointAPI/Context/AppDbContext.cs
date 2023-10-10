@@ -12,5 +12,7 @@ namespace WebPointAPI.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+
+        public DbSet<Historico> Historicos { get; set; }
     }
 }

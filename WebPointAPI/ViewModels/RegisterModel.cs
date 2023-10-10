@@ -13,7 +13,6 @@ namespace WebPointAPI.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirma senha")]
         [Compare("Password", ErrorMessage = "Senhas não conferem")]
 
         public string ConfirmPassword { get; set; }

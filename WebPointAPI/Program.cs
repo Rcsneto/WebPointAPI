@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
 using WebPointAPI.Context;
 using WebPointAPI.Services;
@@ -23,6 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
+builder.Services.AddScoped<IHistoricoService, HistoricoService>();
 builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
 
 builder.Services.AddSwaggerGen(c =>
