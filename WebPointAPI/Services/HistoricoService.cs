@@ -70,5 +70,15 @@ namespace WebPointAPI.Services
             _context.Entry(historico).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Historico>> GetHistoricoByEmail(string email)
+        {
+            IEnumerable<Historico> historicos;
+
+            historicos = await _context.Historicos.Where(n => n.Email.Contains(email)).ToListAsync();
+
+            return historicos;
+        }
+
     }
 }

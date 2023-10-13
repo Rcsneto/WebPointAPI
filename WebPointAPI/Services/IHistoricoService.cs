@@ -16,5 +16,7 @@ namespace WebPointAPI.Services
 
         Task DeleteHistorico(Historico historico);
 
+        Task<IEnumerable<Historico>> GetHistoricoByEmail(string email);
+
     }
 }

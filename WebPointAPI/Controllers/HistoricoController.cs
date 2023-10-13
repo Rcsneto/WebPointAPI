@@ -59,6 +59,8 @@ namespace WebPointAPI.Controllers
         {
             try
             {
+                historico.Data = DateTime.Now;
+
                 await _historicoService.CreateHistorico(historico);
 
                 return CreatedAtRoute(nameof(GetHistoricoById), new { id = historico.ID }, historico);
@@ -104,7 +106,7 @@ namespace WebPointAPI.Controllers
                 }
                 else
                 {
-                    return BadRequest("histórico não encontrado");
+                    return NotFound("histórico não encontrado");
                 }
             }
             catch
@@ -134,6 +136,22 @@ namespace WebPointAPI.Controllers
             catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao obter Histórico");
+            }
+
+        }
+
+        [HttpGet("HistoricoByEmail")]
+        public async Task<ActionResult<IAsyncEnumerable<Historico>>> GetHistoricoByEmail([FromQuery] string email)
+        {
+            try
+            {
+                var historicos = await _historicoService.GetHistoricoByEmail(email);
+
+                return Ok(historicos);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao obter historicos");
             }
 
         }
