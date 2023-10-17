@@ -60,6 +60,15 @@ namespace WebPointAPI.Controllers
             }
         }
 
+        [HttpGet("GetUserByEmail")]
+
+        public async Task<ActionResult> GetUserByEmail(string email)
+        {
+            var result = await _authentication.GetUserByEmail(email);
+
+            return Ok(result);
+        }
+
         private ActionResult<UserToken> GenerateToken(LoginModel userinfo)
         {
             var claims = new[]

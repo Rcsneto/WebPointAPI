@@ -20,6 +20,13 @@ namespace WebPointAPI.Services
             return result.Succeeded;
         }
 
+        public async Task<IdentityUser> GetUserByEmail(string email)
+        {
+            var result = await _userManager.FindByEmailAsync(email);
+
+            return result;
+        }
+
         public async Task Logout()
         {
             await _signInManager.SignOutAsync();
